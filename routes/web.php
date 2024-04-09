@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Controller\Demande;
+use App\Http\Controllers\DemandeController; // Modification ici
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('demandes', DemandeController::class);
+Route::resource('demandes', DemandeController::class); // Modification ici
