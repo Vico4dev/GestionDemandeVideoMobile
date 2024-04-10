@@ -21,5 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::resource('demandes', DemandeController::class); // Modification ici
-Route::get('demandes/{demande}/pdf', 'DemandeController@exportPdf')->name('demandes.exportPdf');
+Route::resource('demandes', DemandeController::class);
+Route::get('demandes/{demande}/pdf', [DemandeController::class, 'exportPdf'])->name('demandes.exportPdf');
