@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Demande;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF; // Si tu n'utilises pas d'alias
+use PDF;
+
+
 
 class DemandeController extends Controller
 {
@@ -140,8 +142,9 @@ class DemandeController extends Controller
     }
 
 
-    public function exportPdf(Demande $demande)
+    public function exportPdf($id)
     {
+        $demande = Demande::find($id);
         $pdf = PDF::loadView('demandes.pdf', compact('demande'));
         return $pdf->download('demande-'.$demande->id.'.pdf');
     }
