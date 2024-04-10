@@ -18,7 +18,7 @@
                     <label for="demandeur_prenom">Prénom du demandeur</label>
                     <input type="text" class="form-control" name="demandeur_prenom" id="demandeur_prenom" required>
                 </div>
-                <div class="form-group">
+        <div class="form-group">
                     <label for="latitude">Latitude</label>
                     <input type="text" class="form-control" name="latitude" id="latitude">
                 </div>

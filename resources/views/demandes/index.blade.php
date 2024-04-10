@@ -2,7 +2,9 @@
 
 @section('content')
     <h2>Liste des Demandes</h2>
+    @auth
     <a href="{{ route('demandes.create') }}" class="btn btn-primary">Ajouter une demande</a>
+    @endauth
     <table class="table">
         <thead>
             <tr>
