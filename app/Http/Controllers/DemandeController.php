@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Demande;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class DemandeController extends Controller
 {
@@ -52,8 +54,10 @@ class DemandeController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('photos_demandes');
+            $data['photo'] = $request->file('photo')->store('public/photos_demandes');
+            $data['photo'] = str_replace('public/', '', $data['photo']); // Enlève le préfixe 'public/' du chemin enregistré.
         }
+        
 
         Demande::create($data);
 
@@ -135,4 +139,11 @@ class DemandeController extends Controller
         
         return redirect()->route('demandes.index')->with('success', 'Demande supprimée avec succès.');
     }
+
+
+    public function exportPdf(Demande $demande)
+{
+    $pdf = PDF::loadView('demandes.pdf', compact('demande'));
+    return $pdf->download('demande-'.$demande->id.'.pdf');
+}
 }

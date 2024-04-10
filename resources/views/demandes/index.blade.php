@@ -33,15 +33,19 @@
                     <td>{{ $demande->demande_prestataire }}</td>
                     <td>{{ $demande->date_mise_en_place }}</td>
                     <td>{{ $demande->commentaires }}</td>
-                    <td>{{ $demande->photo }}</td>
+                    <td>        @if($demande->photo)
+            <img src="{{ asset('storage/' . $demande->photo) }}" class="img-fluid mb-6" alt="Photo de la demande" style="max-height: 300px;">
+        @endif</td>
                     <td>
                         <a href="{{ route('demandes.show', $demande->id) }}" class="btn btn-success">Voir</a>
-                        <a href="{{ route('demandes.edit', $demande->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('demandes.destroy', $demande->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
+                        @auth
+                            <a href="{{ route('demandes.edit', $demande->id) }}" class="btn btn-warning">Modifier</a>
+                            <form action="{{ route('demandes.destroy', $demande->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        @endauth
                     </td>
                 </tr>
             @endforeach

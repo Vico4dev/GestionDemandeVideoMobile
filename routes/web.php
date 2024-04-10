@@ -15,10 +15,11 @@ use App\Http\Controllers\DemandeController; // Modification ici
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/demandes');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('demandes', DemandeController::class); // Modification ici
+Route::get('demandes/{demande}/pdf', 'DemandeController@exportPdf')->name('demandes.exportPdf');
