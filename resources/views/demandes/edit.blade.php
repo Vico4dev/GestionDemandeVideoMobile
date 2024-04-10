@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="card">
+ 
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<div class="card-body">
     <h2>Modifier la Demande</h2>
     <form action="{{ route('demandes.update', $demande->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -39,6 +45,7 @@
                     <label for="localisation_exacte">Localisation Exacte</label>
                     <input type="text" class="form-control" name="localisation_exacte" id="localisation_exacte" value="{{ $demande->localisation_exacte }}" required>
                 </div>
+                <div id="map" class="img-fluid mb-3" style="height: 400px;"></div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -80,10 +87,21 @@
                     @if($demande->photo)
                         <img src="{{ asset('storage/'.$demande->photo) }}" alt="Photo actuelle" class="img-fluid">
                     @endif
-                    <input type="file" class="form-control-file" name="photo" id="photo">
+  
                 </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
-    </form>
+    </form>    </div>
+        </div>
+        <script>
+    var map = L.map('map').setView([{{ $demande->latitude }}, {{ $demande->longitude }}], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker = L.marker([{{ $demande->latitude }}, {{ $demande->longitude }}]).addTo(map);
+    marker.bindPopup("<b>Localisation Exacte:</b><br>{{ $demande->localisation_exacte }}").openPopup();
+</script>
 @endsection

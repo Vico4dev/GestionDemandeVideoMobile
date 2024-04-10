@@ -1,0 +1,26 @@
+.badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.badge-new {
+    background-color: #007bff; /* Bleu */
+}
+
+.badge-validation {
+    background-color: #ffc107; /* Jaune */
+}
+
+.badge-installation {
+    background-color: #28a745; /* Vert */
+}
+
+.badge-complete {
+    background-color: #6c757d; /* Gris */
+}
+
+.badge-default {
+    background-color: #17a2b8; /* Cyan */
+}

@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Ajouter une Demande</h2>
+<div class="card">
+ 
+
+<div class="card-body">
+     
+<h2>Ajouter une Demande</h2>
     <form action="{{ route('demandes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -68,4 +73,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Soumettre</button>
     </form>
+    </div>  </div>
 @endsection
