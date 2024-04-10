@@ -8,9 +8,12 @@
             <tr>
                 <th>Date Demande</th>
                 <th>Demandeur</th>
+                <th>Status</th>
                 <th>Service</th>
                 <th>Localisation Exacte</th>
                 <th>Commune</th>
+                <th>Coordonées</th>
+         
                 <th>Validateur</th>
                 <th>Date Validation</th>
                 <th>Demande Prestataire</th>
@@ -23,15 +26,19 @@
         <tbody>
             @foreach($demandes as $demande)
                 <tr>
-                    <td>{{ $demande->date_demande }}</td>
+                    <td>{{ $demande->date_demande->format('d-m-Y') }}</td>
+   
                     <td>{{ $demande->demandeur_nom }} {{ $demande->demandeur_prenom }}</td>
+                    <td>{{ $demande->status }}</td>
                     <td>{{ $demande->service }}</td>
                     <td>{{ $demande->localisation_exacte }}</td>
                     <td>{{ $demande->commune }}</td>
+                    <td>{{ $demande->latitude }} - <!-- Ajout du champ latitude -->
+                    {{ $demande->longitude }} 
                     <td>{{ $demande->validateur }}</td>
-                    <td>{{ $demande->date_validation }}</td>
+                    <td>{{ $demande->date_validation->format('d-m-Y') }}</td>
                     <td>{{ $demande->demande_prestataire }}</td>
-                    <td>{{ $demande->date_mise_en_place }}</td>
+                    <td>{{ $demande->date_mise_en_place->format('d-m-Y') }}</td>
                     <td>{{ $demande->commentaires }}</td>
                     <td>        @if($demande->photo)
             <img src="{{ asset('storage/' . $demande->photo) }}" class="img-fluid mb-6" alt="Photo de la demande" style="max-height: 300px;">

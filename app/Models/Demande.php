@@ -22,6 +22,10 @@ class Demande extends Model
         'date_mise_en_place',
         'commentaires',
         'photo',
+        'status',
+        'latitude', // Champ latitude ajouté
+        'longitude', // Champ longitude ajouté
     ];
+    
     
 }

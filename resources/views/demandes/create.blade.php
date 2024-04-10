@@ -19,6 +19,14 @@
                     <input type="text" class="form-control" name="demandeur_prenom" id="demandeur_prenom" required>
                 </div>
                 <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" name="latitude" id="latitude">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" name="longitude" id="longitude">
+                </div>
+                <div class="form-group">
                     <label for="service">Service</label>
                     <input type="text" class="form-control" name="service" id="service" required>
                 </div>

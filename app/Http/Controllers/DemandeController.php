@@ -50,6 +50,8 @@ class DemandeController extends Controller
             'date_validation' => 'nullable|date',
             'demande_prestataire' => 'required|boolean',
             'date_mise_en_place' => 'nullable|date',
+            'latitude' => 'nullable', // Validation facultative pour la latitude
+            'longitude' => 'nullable', // Validation facultative pour la longitude
             'commentaires' => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
         ]);
@@ -107,6 +109,7 @@ class DemandeController extends Controller
             'date_validation' => 'nullable|date',
             'demande_prestataire' => 'required|boolean',
             'date_mise_en_place' => 'nullable|date',
+            'status' => 'required|string|max:255',
             'commentaires' => 'nullable|string',
             'photo' => 'nullable|image|max:2048',
         ]);

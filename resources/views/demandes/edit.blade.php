@@ -9,8 +9,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="date_demande">Date de Demande</label>
-                    <input type="date" class="form-control" name="date_demande" id="date_demande" value="{{ $demande->date_demande }}" required>
-                </div>
+                    <input type="date" class="form-control" name="date_demande" id="date_demande" value="{{ $demande->date_demande ? $demande->date_demande->format('Y-m-d') : '' }}" required>
+     </div>
                 <div class="form-group">
                     <label for="demandeur_nom">Nom du demandeur</label>
                     <input type="text" class="form-control" name="demandeur_nom" id="demandeur_nom" value="{{ $demande->demandeur_nom }}" required>
@@ -19,6 +19,18 @@
                     <label for="demandeur_prenom">Prénom du demandeur</label>
                     <input type="text" class="form-control" name="demandeur_prenom" id="demandeur_prenom" value="{{ $demande->demandeur_prenom }}" required>
                 </div>
+                <label for="status">Etat de la demande</label>
+                <select name="status" class="form-control">
+ 
+
+    <option value="Nouveau" {{ $demande->status == "Nouveau" ? 'selected' : '' }}>Nouveau</option>
+    <option value="En cours de validation" {{ $demande->status == "En cours de validation" ? 'selected' : '' }}>En cours de validation</option>
+    <option value="En cours d'installation" {{ $demande->status == "En cours d'installation" ? 'selected' : '' }}>En cours d'installation</option>
+    <option value="Installer" {{ $demande->status == "Installer" ? 'selected' : '' }}>Installer</option>
+    <option value="Terminer" {{ $demande->status == "Terminer" ? 'selected' : '' }}>Terminer</option>
+</select>
+
+             
                 <div class="form-group">
                     <label for="service">Service</label>
                     <input type="text" class="form-control" name="service" id="service" value="{{ $demande->service }}" required>
@@ -35,11 +47,19 @@
                 </div>
                 <div class="form-group">
                     <label for="validateur">Validateur</label>
-                    <input type="text" class="form-control" name="validateur" id="validateur" value="{{ $demande->validateur }}" required>
+                    <select name="validateur" class="form-control">
+ 
+<option value="En attente" {{ $demande->validateur == "En attente" ? 'selected' : '' }}>En attente</option>
+ <option value="Christophe LUCAS" {{ $demande->validateur == "Christophe LUCAS" ? 'selected' : '' }}>Christophe LUCAS</option>
+ <option value="Olivier MOURO" {{ $demande->validateur == "Olivier MOURO" ? 'selected' : '' }}>Olivier MOURO</option>
+ <option value="Bastien Sarrail" {{ $demande->validateur == "Bastien Sarrail" ? 'selected' : '' }}>Bastien Sarrail</option>
+</select>
                 </div>
                 <div class="form-group">
                     <label for="date_validation">Date de Validation</label>
-                    <input type="date" class="form-control" name="date_validation" id="date_validation" value="{{ $demande->date_validation }}" required>
+
+                    <input type="date" class="form-control" name="date_validation" id="date_validation" value="{{ $demande->date_validation ? $demande->date_validation->format('Y-m-d') : '' }}" required>
+
                 </div>
                 <div class="form-group">
                     <label for="demande_prestataire">Demande Prestataire</label>
@@ -47,7 +67,9 @@
                 </div>
                 <div class="form-group">
                     <label for="date_mise_en_place">Date de Mise en Place</label>
-                    <input type="date" class="form-control" name="date_mise_en_place" id="date_mise_en_place" value="{{ $demande->date_mise_en_place }}" required>
+                <input type="date" class="form-control" name="date_mise_en_place" id="date_mise_en_place" value="{{ $demande->date_mise_en_place ? $demande->date_mise_en_place->format('Y-m-d') : '' }}" required>
+
+          
                 </div>
                 <div class="form-group">
                     <label for="commentaires">Commentaires</label>
