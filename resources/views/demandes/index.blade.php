@@ -12,7 +12,7 @@
                 <th>Service</th>
                 <th>Localisation Exacte</th>
                 <th>Commune</th>
-                <th>Coordonées</th>
+          <!--       <th>Coordonées</th> -->
          
                 <th>Validateur</th>
                 <th>Date Validation</th>
@@ -33,8 +33,8 @@
                     <td>{{ $demande->service }}</td>
                     <td>{{ $demande->localisation_exacte }}</td>
                     <td>{{ $demande->commune }}</td>
-                    <td>{{ $demande->latitude }} - <!-- Ajout du champ latitude -->
-                    {{ $demande->longitude }} 
+    <!--                 <td>{{ $demande->latitude }} - 
+                    {{ $demande->longitude }} </td> -->
                     <td>{{ $demande->validateur }}</td>
                     <td>{{ $demande->date_validation->format('d-m-Y') }}</td>
                     <td>{{ $demande->demande_prestataire }}</td>
@@ -57,5 +57,21 @@
                 </tr>
             @endforeach
         </tbody>
+
     </table>
+
+    <script>
+$(document).ready(function() {
+    $('.table').DataTable({
+        responsive: true,
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/fr_fr.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+        </script>
 @endsection
