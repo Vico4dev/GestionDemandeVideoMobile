@@ -109,11 +109,11 @@
                         <a href="{{ route('demandes.show', $demande->id) }}" class="btn btn-success">Voir</a>
                         @auth
                             <a href="{{ route('demandes.edit', $demande->id) }}" class="btn btn-warning">Modifier</a>
-                            <form action="{{ route('demandes.destroy', $demande->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
-                            </form>
+                            <form action="{{ route('demandes.destroy', $demande->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande ?');">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+</form>
                         @endauth
                     </td>
                 </tr>
